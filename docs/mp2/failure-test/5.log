@@ -1,0 +1,178 @@
+zpeng@MSI:/mnt/j/cygwin64/home/zongl/ws/raft_mp$ /usr/local/bin/python3.10 /mnt/j/cygwin64/home/zongl/ws/raft_mp/raft_election_failure_test.py 5 /mnt/j/cygwin64/home/zongl/ws/cs425-mps/bin/raft-linux-amd64
+/mnt/j/cygwin64/home/zongl/ws/raft_mp/raft_election_failure_test.py:56: DeprecationWarning: There is no current event loop
+  asyncio.get_event_loop().run_until_complete(main())
+143886.4071107 # Starting 5 processes
+143886.4321555 Waiting for a leader to be elected
+INFO    start with nid [4], num of nodes [5], pid [6360]  src=main
+INFO    start with nid [3], num of nodes [5], pid [6358]  src=main
+INFO    start with nid [0], num of nodes [5], pid [6352]  src=main
+INFO    start with nid [1], num of nodes [5], pid [6354]  src=main
+INFO    start with nid [2], num of nodes [5], pid [6356]  src=main
+INFO    follower election set timeout:: 1.523s        nid=0 src=raft
+INFO    follower election set timeout:: 2.54s         nid=1 src=raft
+INFO    follower election set timeout:: 1.835s        nid=3 src=raft
+INFO    follower election set timeout:: 2.727s        nid=2 src=raft
+INFO    follower election set timeout:: 2.697s        nid=4 src=raft
+INFO    follower election timeout after:: 1.523s      nid=0 src=raft
+INFO    state:: FOLLOWER -> CANDIDATE                 nid=0 src=raft
+143888.0516684 0>STATE state="CANDIDATE"
+INFO    candidate election set timeout:: 1.626s       nid=0 src=raft
+143888.0538605 0>STATE term=1
+143888.0543629 0>SEND 1 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143888.0549738 0>SEND 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143888.0557168 0>SEND 3 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143888.0564864 0>SEND 4 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143888.0573 1<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143888.0578791 2<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=1 src=raft
+143888.0585176 3<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=2 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=3 src=raft
+143888.0617752 4<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=2 src=raft
+INFO    follower election set timeout:: 2.925s        nid=1 src=raft
+INFO    follower election set timeout:: 2.325s        nid=2 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=4 src=raft
+INFO    follower election set timeout:: 1.502s        nid=3 src=raft
+143888.065324 1>STATE term=1
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+143888.0668336 1>SEND 0 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    follower election set timeout:: 2.109s        nid=4 src=raft
+143888.0675988 2>STATE term=1
+143888.0687195 2>SEND 0 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143888.0693329 3>STATE term=1
+143888.0702371 3>SEND 0 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143888.0712168 0<RECEIVE 1 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143888.072042 0<RECEIVE 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    recv RequestVoteRes nid 1; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=0 src=raft
+143888.0730789 0<RECEIVE 3 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    recv RequestVoteRes nid 2; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=0 src=raft
+143888.0749875 4>STATE term=1
+INFO    recv RequestVoteRes nid 3; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=0 src=raft
+143888.0757478 4>SEND 0 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    candidate get new vote from 1                 nid=0 src=raft
+143888.0771598 0<RECEIVE 4 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    candidate get new vote from 2                 nid=0 src=raft
+INFO    recv RequestVoteRes nid 4; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=0 src=raft
+143888.0793649 0>STATE state="LEADER"
+INFO    state:: CANDIDATE -> LEADER                   nid=0 src=raft
+143888.0815756 0>STATE leader="0"
+143888.0823325 0>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143888.0830281 0>SEND 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143888.0838222 0>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143888.084819 1<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143888.0855198 2<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=1 src=raft
+143888.0863181 3<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=2 src=raft
+143888.086954 0>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=3 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=2 src=raft
+143888.0874633 4<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    follower election set timeout:: 1.955s        nid=2 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=4 src=raft
+143888.0886793 2>STATE leader="0"
+INFO    follower election set timeout:: 1.858s        nid=3 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 2.158s        nid=4 src=raft
+143888.0907331 2>SEND 0 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    follower election set timeout:: 2.926s        nid=1 src=raft
+143888.0909525 3>STATE leader="0"
+143888.0925634 3>SEND 0 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143888.0930908 0<RECEIVE 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143888.0934675 0<RECEIVE 3 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    recv AppendEntriesRes nid 2; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=0 src=raft
+143888.0943898 1>STATE leader="0"
+INFO    recv AppendEntriesRes nid 3; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=0 src=raft
+143888.0950663 1>SEND 0 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143888.0957359 4>STATE leader="0"
+143888.0961544 4>SEND 0 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143888.0965792 0<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143888.0968809 0<RECEIVE 4 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=0 src=raft
+143888.0975165 # Successfully elected 0 for term 1
+INFO    recv AppendEntriesRes nid 4; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=0 src=raft
+143888.0979334 # Stopping leader 0, waiting for next one to be elected
+INFO    follower election timeout after:: 1.858s      nid=3 src=raft
+INFO    state:: FOLLOWER -> CANDIDATE                 nid=3 src=raft
+INFO    candidate election set timeout:: 1.628s       nid=3 src=raft
+143889.9498355 3>STATE state="CANDIDATE"
+143889.9501838 3>STATE leader=null
+143889.9503663 3>STATE term=2
+143889.9506655 3>SEND 0 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+143889.9509406 3>SEND 1 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+143889.9511584 3>SEND 2 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+143889.951352 3>SEND 4 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+143889.951712 sending a message from 3 to 0 but 0 is not registered
+143889.9519247 1<RECEIVE 3 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+143889.9523268 2<RECEIVE 3 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 3; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}  nid=1 src=raft
+143889.9526647 4<RECEIVE 3 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 3; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}  nid=2 src=raft
+INFO    recv RequestVoteReq nid 3; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"3","last_log_index":0,"last_log_term":0}  nid=4 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=2 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 2.216s        nid=2 src=raft
+INFO    follower election set timeout:: 1.977s        nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+INFO    follower election set timeout:: 2.708s        nid=4 src=raft
+143889.9538157 1>STATE leader=null
+143889.9543931 1>STATE term=2
+143889.9546646 1>SEND 3 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143889.9550539 2>STATE leader=null
+143889.955369 2>STATE term=2
+143889.9557008 2>SEND 3 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143889.956005 4>STATE leader=null
+143889.956329 4>STATE term=2
+143889.9566437 4>SEND 3 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143889.9569994 3<RECEIVE 1 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143889.9572563 3<RECEIVE 2 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+INFO    recv RequestVoteRes nid 1; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}  nid=3 src=raft
+143889.957496 3<RECEIVE 4 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+INFO    recv RequestVoteRes nid 2; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}  nid=3 src=raft
+INFO    recv RequestVoteRes nid 4; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}  nid=3 src=raft
+INFO    candidate get new vote from 1                 nid=3 src=raft
+INFO    candidate get new vote from 2                 nid=3 src=raft
+INFO    state:: CANDIDATE -> LEADER                   nid=3 src=raft
+143889.9595543 3>STATE state="LEADER"
+143889.960173 3>STATE leader="3"
+143889.9606328 3>SEND 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143889.9610162 3>SEND 1 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143889.9613565 3>SEND 2 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143889.9616923 3>SEND 4 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143889.9621195 sending a message from 3 to 0 but 0 is not registered
+143889.9624544 1<RECEIVE 3 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143889.9628416 2<RECEIVE 3 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 3; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=1 src=raft
+143889.9631718 4<RECEIVE 3 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    recv AppendEntriesReq nid 3; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=4 src=raft
+INFO    follower election set timeout:: 2.5s          nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+INFO    recv AppendEntriesReq nid 3; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"3","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=2 src=raft
+143889.9640657 1>STATE leader="3"
+INFO    follower election set timeout:: 1.661s        nid=4 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=2 src=raft
+INFO    follower election set timeout:: 2.144s        nid=2 src=raft
+143889.9652033 1>SEND 3 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143889.9656894 3<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=3 src=raft
+143889.9661945 4>STATE leader="3"
+143889.9669997 4>SEND 3 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143889.9674007 2>STATE leader="3"
+143889.9678773 2>SEND 3 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143889.9683137 3<RECEIVE 4 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143889.9686222 3<RECEIVE 2 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 4; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=3 src=raft
+INFO    recv AppendEntriesRes nid 2; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=3 src=raft
+143889.969236 # Successfully elected 3 for term 2
+143889.9696051 ### Election after failure test passed!
+143889.9703416 # Sent 30 messages, 2706 bytes
+Task was destroyed but it is pending!
+task: <Task pending name='Task-22' coro=<Event.wait() done, defined at /usr/local/lib/python3.10/asyncio/locks.py:200> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Task was destroyed but it is pending!
+task: <Task pending name='Task-24' coro=<Event.wait() done, defined at /usr/local/lib/python3.10/asyncio/locks.py:200> wait_for=<Future pending cb=[Task.task_wakeup()]>>

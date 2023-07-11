@@ -1,0 +1,354 @@
+zpeng@MSI:/mnt/j/cygwin64/home/zongl/ws/raft_mp$ /usr/local/bin/python3.10 /mnt/j/cygwin64/home/zongl/ws/raft_mp/raft_partition_test.py 5 /mnt/j/cygwin64/home/zongl/ws/cs425-mps/bin/raft-linux-amd64
+/mnt/j/cygwin64/home/zongl/ws/raft_mp/raft_partition_test.py:70: DeprecationWarning: There is no current event loop
+  asyncio.get_event_loop().run_until_complete(main())
+143932.2509717 # Starting 5 processes
+143932.2763887 Waiting for a leader to be elected
+INFO    start with nid [4], num of nodes [5], pid [6448]  src=main
+INFO    start with nid [0], num of nodes [5], pid [6440]  src=main
+INFO    start with nid [1], num of nodes [5], pid [6442]  src=main
+INFO    follower election set timeout:: 2.079s        nid=0 src=raft
+INFO    follower election set timeout:: 2.252s        nid=1 src=raft
+INFO    start with nid [3], num of nodes [5], pid [6446]  src=main
+INFO    start with nid [2], num of nodes [5], pid [6444]  src=main
+INFO    follower election set timeout:: 1.668s        nid=2 src=raft
+INFO    follower election set timeout:: 1.815s        nid=4 src=raft
+INFO    follower election set timeout:: 2.004s        nid=3 src=raft
+INFO    follower election timeout after:: 1.668s      nid=2 src=raft
+INFO    state:: FOLLOWER -> CANDIDATE                 nid=2 src=raft
+INFO    candidate election set timeout:: 1.598s       nid=2 src=raft
+143934.0604406 2>STATE state="CANDIDATE"
+143934.0615969 update_state [2@None]: state[None]=CANDIDATE
+143934.0619104 2>STATE term=1
+143934.0623551 2>SEND 0 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143934.0626167 2>SEND 1 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143934.0628917 2>SEND 3 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143934.0632766 update_state [2@None]: term[None]=1
+143934.0635676 0<RECEIVE 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143934.0639962 1<RECEIVE 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 2; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}  nid=0 src=raft
+143934.0643433 3<RECEIVE 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 2; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}  nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=0 src=raft
+143934.0650789 2>SEND 4 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 1.669s        nid=0 src=raft
+INFO    follower election set timeout:: 2.491s        nid=1 src=raft
+143934.0672196 4<RECEIVE 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 2; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}  nid=3 src=raft
+INFO    recv RequestVoteReq nid 2; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}  nid=4 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    follower election set timeout:: 2.411s        nid=3 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+143934.0684811 0>STATE term=1
+INFO    follower election set timeout:: 1.571s        nid=4 src=raft
+143934.0692985 0>SEND 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143934.0699067 1>STATE term=1
+143934.0716777 1>SEND 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143934.0723293 update_state [0@None]: term[None]=1
+143934.0730596 2<RECEIVE 0 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143934.0736513 2<RECEIVE 1 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    recv RequestVoteRes nid 0; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=2 src=raft
+143934.0744296 update_state [1@None]: term[None]=1
+INFO    recv RequestVoteRes nid 1; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=2 src=raft
+INFO    candidate get new vote from 0                 nid=2 src=raft
+INFO    candidate get new vote from 1                 nid=2 src=raft
+143934.0755433 3>STATE term=1
+INFO    state:: CANDIDATE -> LEADER                   nid=2 src=raft
+143934.0762792 3>SEND 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143934.0772334 update_state [3@None]: term[None]=1
+143934.0776231 2<RECEIVE 3 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    recv RequestVoteRes nid 3; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=2 src=raft
+143934.0781458 4>STATE term=1
+143934.0792656 4>SEND 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143934.0797453 update_state [4@None]: term[None]=1
+143934.0800683 2<RECEIVE 4 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    recv RequestVoteRes nid 4; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=2 src=raft
+143934.0806457 2>STATE state="LEADER"
+143934.0815939 2>STATE leader="2"
+143934.0820432 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143934.0824478 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143934.0828705 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143934.0833159 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143934.0837601 update_state [2@1]: state[None]=LEADER
+143934.084155 update_state [2@1]: leader[None]=2
+143934.0846346 Leaders: {1: '2'} normal_op: defaultdict(<class 'set'>, {1: {'2'}})
+143934.0851871 0<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=0 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=0 src=raft
+143934.0861521 1<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    follower election set timeout:: 1.756s        nid=0 src=raft
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=1 src=raft
+143934.0876335 3<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 2.541s        nid=1 src=raft
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=3 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    follower election set timeout:: 2.541s        nid=3 src=raft
+143934.0906039 4<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=4 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+INFO    follower election set timeout:: 2.487s        nid=4 src=raft
+143934.0950923 0>STATE leader="2"
+143934.0959021 0>SEND 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143934.0964108 1>STATE leader="2"
+143934.0972757 1>SEND 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143934.0977249 3>STATE leader="2"
+143934.0983942 3>SEND 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143934.0989552 update_state [0@1]: leader[None]=2
+143934.0993781 Leaders: {1: '2'} normal_op: defaultdict(<class 'set'>, {1: {'0', '2'}})
+143934.0998988 2<RECEIVE 0 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143934.1003981 2<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    recv AppendEntriesRes nid 0; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=2 src=raft
+143934.1008734 2<RECEIVE 3 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=2 src=raft
+143934.1013747 update_state [1@1]: leader[None]=2
+INFO    recv AppendEntriesRes nid 3; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=2 src=raft
+143934.1025383 Leaders: {1: '2'} normal_op: defaultdict(<class 'set'>, {1: {'0', '2', '1'}})
+143934.1034299 update_state [3@1]: leader[None]=2
+143934.1043814 Leaders: {1: '2'} normal_op: defaultdict(<class 'set'>, {1: {'0', '2', '1', '3'}})
+143934.1049285 4>STATE leader="2"
+143934.1057916 4>SEND 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143934.1062798 update_state [4@1]: leader[None]=2
+143934.1066634 Leaders: {1: '2'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}})
+143934.1071612 2<RECEIVE 4 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    recv AppendEntriesRes nid 4; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=2 src=raft
+143934.1092945 # Successfully elected 2 for term 1
+143934.1097799 # Partitioning off leader 2, waiting for next one to be elected
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143934.3784013 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.3789516 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.3798871 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.3806989 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.3814972 dropping message from 2 to 0 due to partition
+143934.3820791 dropping message from 2 to 1 due to partition
+143934.3826721 dropping message from 2 to 3 due to partition
+143934.3832843 dropping message from 2 to 4 due to partition
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143934.6771662 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.6774479 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.6777734 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.678119 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.6784467 dropping message from 2 to 0 due to partition
+143934.6787579 dropping message from 2 to 1 due to partition
+143934.6792014 dropping message from 2 to 3 due to partition
+143934.679539 dropping message from 2 to 4 due to partition
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143934.978067 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.9789023 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.9800316 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.9811552 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143934.9828633 dropping message from 2 to 0 due to partition
+143934.9837844 dropping message from 2 to 1 due to partition
+143934.9846909 dropping message from 2 to 3 due to partition
+143934.9859267 dropping message from 2 to 4 due to partition
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143935.2780921 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.2788461 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.2800534 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.2808953 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.2818827 dropping message from 2 to 0 due to partition
+143935.2827823 dropping message from 2 to 1 due to partition
+143935.2835572 dropping message from 2 to 3 due to partition
+143935.284417 dropping message from 2 to 4 due to partition
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143935.5784556 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.5792074 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.5800458 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.5810024 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.582209 dropping message from 2 to 0 due to partition
+143935.5828018 dropping message from 2 to 1 due to partition
+143935.5836787 dropping message from 2 to 3 due to partition
+143935.5843984 dropping message from 2 to 4 due to partition
+INFO    follower election timeout after:: 1.756s      nid=0 src=raft
+INFO    state:: FOLLOWER -> CANDIDATE                 nid=0 src=raft
+INFO    candidate election set timeout:: 2.487s       nid=0 src=raft
+143935.8460941 0>STATE state="CANDIDATE"
+143935.8478656 update_state [0@1]: state[None]=CANDIDATE
+143935.8485808 0>STATE leader=null
+143935.849534 0>STATE term=2
+143935.8505941 0>SEND 1 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143935.8512215 0>SEND 2 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143935.8521344 0>SEND 3 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143935.8532622 0>SEND 4 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143935.8542459 update_state [0@1]: leader[None]=None
+143935.8550767 update_state [0@1]: term[None]=2
+143935.8570063 1<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+143935.8579043 dropping message from 0 to 2 due to partition
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=1 src=raft
+143935.8589702 3<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 2.297s        nid=1 src=raft
+143935.8608863 4<RECEIVE 0 {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=3 src=raft
+INFO    recv RequestVoteReq nid 0; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":2,"candidate_id":"0","last_log_index":0,"last_log_term":0}  nid=4 src=raft
+143935.8625971 1>STATE leader=null
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    follower election set timeout:: 2.926s        nid=3 src=raft
+143935.8634323 1>STATE term=2
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+INFO    follower election set timeout:: 2.736s        nid=4 src=raft
+143935.8641045 1>SEND 0 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143935.8649369 update_state [1@1]: leader[None]=None
+143935.8658193 update_state [1@1]: term[None]=2
+143935.8667547 0<RECEIVE 1 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+INFO    recv RequestVoteRes nid 1; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}  nid=0 src=raft
+143935.8683908 3>STATE leader=null
+INFO    candidate get new vote from 1                 nid=0 src=raft
+143935.8693687 3>STATE term=2
+143935.8711583 3>SEND 0 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143935.8726781 4>STATE leader=null
+143935.8742384 4>STATE term=2
+143935.8752683 4>SEND 0 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143935.8763337 update_state [3@1]: leader[None]=None
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143935.8771767 update_state [3@1]: term[None]=2
+143935.879538 0<RECEIVE 3 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+143935.880126 0<RECEIVE 4 {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}
+INFO    recv RequestVoteRes nid 3; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}  nid=0 src=raft
+143935.8806156 update_state [4@1]: leader[None]=None
+INFO    candidate get new vote from 3                 nid=0 src=raft
+143935.8815818 update_state [4@1]: term[None]=2
+INFO    state:: CANDIDATE -> LEADER                   nid=0 src=raft
+143935.8830488 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv RequestVoteRes nid 4; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":2,"vote_granted":true}  nid=0 src=raft
+143935.8836597 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.8847548 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.8853635 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143935.8859085 0>STATE state="LEADER"
+143935.8864635 dropping message from 2 to 0 due to partition
+143935.8868093 dropping message from 2 to 1 due to partition
+143935.8873216 dropping message from 2 to 3 due to partition
+143935.8876674 dropping message from 2 to 4 due to partition
+143935.8881821 update_state [0@2]: state[None]=LEADER
+143935.8889436 0>STATE leader="0"
+143935.8894542 0>SEND 1 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143935.8898548 0>SEND 2 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143935.8903462 0>SEND 3 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143935.890876 0>SEND 4 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143935.8914218 update_state [0@2]: leader[None]=0
+143935.8918614 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'0'}})
+143935.8923725 1<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143935.8929355 dropping message from 0 to 2 due to partition
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=1 src=raft
+143935.8935245 3<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=3 src=raft
+143935.8947273 4<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    follower election set timeout:: 2.376s        nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    follower election set timeout:: 1.759s        nid=3 src=raft
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=4 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+143935.896888 1>STATE leader="0"
+INFO    follower election set timeout:: 1.861s        nid=4 src=raft
+143935.8983597 1>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143935.8991746 3>STATE leader="0"
+143935.8998171 3>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143935.9002665 update_state [1@2]: leader[None]=0
+143935.9005186 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'0', '1'}})
+143935.9010161 0<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143935.9016233 0<RECEIVE 3 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143935.9021722 update_state [3@2]: leader[None]=0
+143935.9023896 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'0', '1', '3'}})
+INFO    recv AppendEntriesRes nid 3; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143935.9029006 4>STATE leader="0"
+143935.9038764 4>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143935.9042539 update_state [4@2]: leader[None]=0
+143935.904533 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'0', '4', '1', '3'}})
+143935.904924 0<RECEIVE 4 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 4; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143935.9055623 # Successfully elected 0 for term 2
+143935.9063144 # Repairing partition, waiting for old leader (2) to catch up
+INFO    leader send heartbeat to followers            nid=2 src=raft
+143936.1774437 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1780082 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1786025 2>SEND 3 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.179302 2>SEND 4 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1799896 0<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1806924 1<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=0 src=raft
+143936.1813215 3<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=1 src=raft
+143936.1819238 4<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=3 src=raft
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=4 src=raft
+143936.1835539 0>SEND 2 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+INFO    leader send heartbeat to followers            nid=0 src=raft
+143936.1843109 1>SEND 2 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+143936.1871438 2<RECEIVE 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+143936.1879845 2<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+INFO    recv AppendEntriesRes nid 0; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}  nid=2 src=raft
+143936.1892908 4>SEND 2 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}  nid=2 src=raft
+INFO    state:: LEADER -> FOLLOWER                    nid=2 src=raft
+143936.1905874 2<RECEIVE 4 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+INFO    follower election set timeout:: 2.322s        nid=2 src=raft
+INFO    recv AppendEntriesRes nid 4; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}  nid=2 src=raft
+143936.1925695 3>SEND 2 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+143936.1935327 0>SEND 1 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1939689 0>SEND 2 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1946301 0>SEND 3 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1951022 0>SEND 4 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+143936.1961955 2<RECEIVE 3 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}
+143936.1966553 2<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv AppendEntriesRes nid 3; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":false}  nid=2 src=raft
+143936.1974673 1<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=2 src=raft
+143936.1979496 3<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=2 src=raft
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=1 src=raft
+143936.1987456 4<RECEIVE 0 {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=3 src=raft
+INFO    follower election set timeout:: 2.343s        nid=2 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 2.095s        nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=3 src=raft
+INFO    follower election set timeout:: 1.916s        nid=3 src=raft
+INFO    recv AppendEntriesReq nid 0; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":2,"leader_id":"0","prev_log_index":0,"prev_log_term":0,"entries":null,"leader_commit":0}  nid=4 src=raft
+143936.201462 2>STATE leader=null
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=4 src=raft
+143936.2026299 2>STATE term=2
+INFO    follower election set timeout:: 2.941s        nid=4 src=raft
+143936.2035719 2>STATE state="FOLLOWER"
+143936.2063715 update_state [2@1]: leader[None]=None
+143936.206838 update_state [2@1]: term[None]=2
+143936.2074008 update_state [2@2]: state[None]=FOLLOWER
+143936.208407 2>STATE leader="0"
+143936.209071 2>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143936.2095654 1>STATE leader=null
+143936.2102052 1>STATE leader="0"
+143936.2105777 1>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143936.2108915 3>STATE leader=null
+143936.2113055 3>STATE leader="0"
+143936.2117291 3>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143936.2120546 update_state [2@2]: leader[None]=0
+143936.212268 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'4', '1', '0', '3', '2'}})
+143936.2125998 0<RECEIVE 2 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143936.2129699 0<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 2; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143936.2132542 0<RECEIVE 3 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143936.2145257 update_state [1@2]: leader[None]=None
+INFO    recv AppendEntriesRes nid 3; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143936.2151119 update_state [1@2]: leader[None]=0
+143936.2156934 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'4', '1', '0', '3', '2'}})
+143936.2159376 update_state [3@2]: leader[None]=None
+143936.2162737 update_state [3@2]: leader[None]=0
+143936.2166191 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'4', '1', '0', '3', '2'}})
+143936.2169629 4>STATE leader=null
+143936.2173766 4>STATE leader="0"
+143936.2177152 4>SEND 0 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+143936.2180971 update_state [4@2]: leader[None]=None
+143936.2183657 update_state [4@2]: leader[None]=0
+143936.2187117 Leaders: {1: '2', 2: '0'} normal_op: defaultdict(<class 'set'>, {1: {'4', '1', '0', '3', '2'}, 2: {'4', '1', '0', '3', '2'}})
+143936.2190971 0<RECEIVE 4 {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}
+INFO    recv AppendEntriesRes nid 4; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":2,"is_success":true}  nid=0 src=raft
+143936.2196025 ### Partition test passed!
+143936.2208031 # Sent 70 messages, 7406 bytes
+Task was destroyed but it is pending!
+task: <Task pending name='Task-22' coro=<Event.wait() done, defined at /usr/local/lib/python3.10/asyncio/locks.py:200> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Task was destroyed but it is pending!
+task: <Task pending name='Task-41' coro=<Event.wait() done, defined at /usr/local/lib/python3.10/asyncio/locks.py:200> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Task was destroyed but it is pending!
+task: <Task pending name='Task-87' coro=<Event.wait() done, defined at /usr/local/lib/python3.10/asyncio/locks.py:200> wait_for=<Future pending cb=[Task.task_wakeup()]>>

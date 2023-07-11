@@ -1,0 +1,61 @@
+zpeng@MSI:/mnt/j/cygwin64/home/zongl/ws/raft_mp$ /usr/local/bin/python3.10 /mnt/j/cygwin64/home/zongl/ws/raft_mp/raft_election_test.py 3 /mnt/j/cygwin64/home/zongl/ws/cs425-mps/bin/raft-linux-amd64
+/mnt/j/cygwin64/home/zongl/ws/raft_mp/raft_election_test.py:38: DeprecationWarning: There is no current event loop
+  asyncio.get_event_loop().run_until_complete(main())
+143474.0984385 # Starting 3 processes
+143474.1117768 Waiting for a leader to be elected
+INFO    start with nid [1], num of nodes [3], pid [6188]  src=main
+INFO    start with nid [0], num of nodes [3], pid [6186]  src=main
+INFO    start with nid [2], num of nodes [3], pid [6190]  src=main
+INFO    follower election set timeout:: 1.659s        nid=2 src=raft
+INFO    follower election set timeout:: 2.069s        nid=1 src=raft
+INFO    follower election set timeout:: 2.775s        nid=0 src=raft
+INFO    follower election timeout after:: 1.659s      nid=2 src=raft
+INFO    state:: FOLLOWER -> CANDIDATE                 nid=2 src=raft
+INFO    candidate election set timeout:: 1.862s       nid=2 src=raft
+143475.8377594 2>STATE state="CANDIDATE"
+143475.839738 2>STATE term=1
+143475.8404992 2>SEND 0 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143475.8410428 2>SEND 1 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143475.8418064 0<RECEIVE 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+143475.8423586 1<RECEIVE 2 {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}
+INFO    recv RequestVoteReq nid 2; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}  nid=0 src=raft
+INFO    recv RequestVoteReq nid 2; path RequestVoteReq; data {"path":"RequestVoteReq","nid":"","term":1,"candidate_id":"2","last_log_index":0,"last_log_term":0}  nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=0 src=raft
+INFO    follower election set timeout:: 2.855s        nid=0 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+143475.8449828 0>STATE term=1
+INFO    follower election set timeout:: 2.084s        nid=1 src=raft
+143475.8487084 0>SEND 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143475.8497265 1>STATE term=1
+143475.8511668 1>SEND 2 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143475.8520401 2<RECEIVE 0 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+143475.8529099 2<RECEIVE 1 {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}
+INFO    recv RequestVoteRes nid 0; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=2 src=raft
+INFO    recv RequestVoteRes nid 1; path RequestVoteRes; data {"path":"RequestVoteRes","nid":"","term":1,"vote_granted":true}  nid=2 src=raft
+INFO    candidate get new vote from 0                 nid=2 src=raft
+INFO    state:: CANDIDATE -> LEADER                   nid=2 src=raft
+143475.857124 2>STATE state="LEADER"
+143475.8609693 2>STATE leader="2"
+143475.8614139 2>SEND 0 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143475.8619004 2>SEND 1 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143475.8632548 0<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+143475.863875 1<RECEIVE 2 {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=0 src=raft
+INFO    recv AppendEntriesReq nid 2; path AppendEntriesReq; data {"path":"AppendEntriesReq","nid":"","term":1,"leader_id":"2","prev_log_index":0,"prev_log_term":0,"entries":[],"leader_commit":0}  nid=1 src=raft
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=0 src=raft
+INFO    follower election set timeout:: 2.709s        nid=0 src=raft
+143475.8655147 0>STATE leader="2"
+INFO    state:: FOLLOWER -> FOLLOWER                  nid=1 src=raft
+INFO    follower election set timeout:: 2.115s        nid=1 src=raft
+143475.8659968 0>SEND 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143475.8667091 2<RECEIVE 0 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143475.8674859 1>STATE leader="2"
+INFO    recv AppendEntriesRes nid 0; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=2 src=raft
+143475.8679259 1>SEND 2 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+143475.8688219 2<RECEIVE 1 {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}
+INFO    recv AppendEntriesRes nid 1; path AppendEntriesRes; data {"path":"AppendEntriesRes","nid":"","term":1,"is_success":true}  nid=2 src=raft
+143475.8695722 # Successfully elected 2 for term 1
+143475.8701088 ### Election test passed
+143475.8722826 # Sent 8 messages, 708 bytes
+Task was destroyed but it is pending!
+task: <Task pending name='Task-14' coro=<Event.wait() done, defined at /usr/local/lib/python3.10/asyncio/locks.py:200> wait_for=<Future pending cb=[Task.task_wakeup()]>>
