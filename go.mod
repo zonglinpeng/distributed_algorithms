@@ -1,4 +1,4 @@
-module github.com/bamboovir/cs425
+module github.com/zonglinpeng/distributed_algorithms
 
 go 1.16
 

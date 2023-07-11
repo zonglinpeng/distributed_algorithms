@@ -3,7 +3,7 @@ package transaction
 import (
 	"fmt"
 
-	"github.com/bamboovir/cs425/lib/mp1/multicast"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/multicast"
 	"github.com/pkg/errors"
 )
 

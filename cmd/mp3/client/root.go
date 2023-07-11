@@ -7,11 +7,11 @@ import (
 	"io"
 	"os"
 
-	"github.com/bamboovir/cs425/lib/mp3/atomic"
-	"github.com/bamboovir/cs425/lib/mp3/client"
-	"github.com/bamboovir/cs425/lib/mp3/config"
-	"github.com/bamboovir/cs425/lib/mp3/transaction"
-	"github.com/bamboovir/cs425/lib/mp3/transaction/command"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/atomic"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/client"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/config"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/transaction"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/transaction/command"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

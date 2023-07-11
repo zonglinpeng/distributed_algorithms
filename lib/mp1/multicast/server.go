@@ -8,9 +8,9 @@ import (
 	"bufio"
 	"encoding/json"
 
-	"github.com/bamboovir/cs425/lib/mp1/metrics"
-	"github.com/bamboovir/cs425/lib/mp1/router"
-	"github.com/bamboovir/cs425/lib/mp1/types"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/metrics"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/router"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/types"
 	log "github.com/sirupsen/logrus"
 )
 

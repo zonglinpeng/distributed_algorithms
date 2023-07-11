@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/bamboovir/cs425/lib/mp1/router"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/router"
 	log "github.com/sirupsen/logrus"
 )
 

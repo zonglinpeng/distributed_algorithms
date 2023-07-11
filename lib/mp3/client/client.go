@@ -3,8 +3,8 @@ package client
 import (
 	"net"
 
-	"github.com/bamboovir/cs425/lib/mp3/config"
-	"github.com/bamboovir/cs425/lib/mp3/transaction"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/config"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/transaction"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 )

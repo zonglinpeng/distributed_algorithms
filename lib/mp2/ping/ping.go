@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/bamboovir/cs425/lib/mp2/group"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp2/group"
 	log "github.com/sirupsen/logrus"
 )
 

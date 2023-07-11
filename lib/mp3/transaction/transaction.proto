@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/bamboovir/cs425/lib/mp3/transaction";
+option go_package = "github.com/zonglinpeng/distributed_algorithms/lib/mp3/transaction";
 package transaction;
 
 service Transaction {

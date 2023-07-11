@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"strings"
 
-	"github.com/bamboovir/cs425/lib/mp2/group"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp2/group"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -181,7 +181,7 @@ func (r *Raft) SnapshotNextIndex() string {
 		curr := fmt.Sprintf("[%d@%d], ", i, entry)
 		buf.WriteString(curr)
 	}
-	
+
 	return buf.String()
 }
 
@@ -192,6 +192,6 @@ func (r *Raft) SnapshotMatchIndex() string {
 		curr := fmt.Sprintf("[%d@%d], ", i, entry)
 		buf.WriteString(curr)
 	}
-	
+
 	return buf.String()
 }

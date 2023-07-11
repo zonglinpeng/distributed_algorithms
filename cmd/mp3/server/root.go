@@ -3,8 +3,8 @@ package server
 import (
 	"os"
 
-	"github.com/bamboovir/cs425/lib/mp3/config"
-	"github.com/bamboovir/cs425/lib/mp3/server"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/config"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/server"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

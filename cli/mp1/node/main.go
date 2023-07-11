@@ -4,8 +4,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/bamboovir/cs425/cmd/mp1"
-	"github.com/bamboovir/cs425/lib/logger"
+	"github.com/zonglinpeng/distributed_algorithms/cmd/mp1"
+	"github.com/zonglinpeng/distributed_algorithms/lib/logger"
 	sync "github.com/sasha-s/go-deadlock"
 	log "github.com/sirupsen/logrus"
 )

@@ -4,7 +4,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/bamboovir/cs425/lib/mp2/raft"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp2/raft"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

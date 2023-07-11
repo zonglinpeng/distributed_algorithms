@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/bamboovir/cs425/cmd/mp0/server"
-	"github.com/bamboovir/cs425/lib/logger"
+	"github.com/zonglinpeng/distributed_algorithms/cmd/mp0/server"
+	"github.com/zonglinpeng/distributed_algorithms/lib/logger"
 	log "github.com/sirupsen/logrus"
 )
 

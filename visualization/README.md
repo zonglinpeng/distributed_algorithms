@@ -21,7 +21,7 @@ You should produce a graph of these two metrics over time.
 For the bandwidth,
 you should track the average bandwidth across each second of the experiment.
 For the delay,
-for each second you should plot the 
+for each second you should plot the
 minimum, maximum, median, and 90th percentile delay at each second.
 Make sure your graphs and axes are well labeled, with units.
 
@@ -69,7 +69,7 @@ scp zonglin7@fa21-cs425-g03-02.cs.illinois.edu:/tmp/a.log .
 scp zonglin7@fa21-cs425-g03-02.cs.illinois.edu:/tmp/b.log .
 scp zonglin7@fa21-cs425-g03-03.cs.illinois.edu:/tmp/c.log .
 
-git clone https://github.com/bamboovir/cs425-mps.git
+git clone https://github.com/zonglinpeng/distributed_algorithms-mps.git
 
 cat a.log | grep  "metrics.bandwith" > a_bandwith.log
 

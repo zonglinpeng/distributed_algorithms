@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/bamboovir/cs425/lib/mp0/types"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp0/types"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

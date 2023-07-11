@@ -9,13 +9,13 @@
 
 The cluster number we are working on is `g03`
 
-[GitHub Link (https://github.com/bamboovir/cs425-mps)](https://github.com/bamboovir/cs425-mps)
+[GitHub Link (https://github.com/zonglinpeng/distributed_algorithms-mps)](https://github.com/zonglinpeng/distributed_algorithms-mps)
 
 Commit SHA: `ed875da9dfaf31266efd9c8ad9eb8d90f6294e93`
 
 ## Instructions for building and running
 
-[Pre-compiled Binaries (https://github.com/bamboovir/cs425-mps/releases/tag/mp3-v1.0.0)](https://github.com/bamboovir/cs425-mps/releases/tag/mp3-v1.0.0)
+[Pre-compiled Binaries (https://github.com/zonglinpeng/distributed_algorithms-mps/releases/tag/mp3-v1.0.0)](https://github.com/zonglinpeng/distributed_algorithms-mps/releases/tag/mp3-v1.0.0)
 
 ```bash
 # Quick Build
@@ -157,7 +157,7 @@ Specific protocol definition
 ```proto
 syntax = "proto3";
 
-option go_package = "github.com/bamboovir/cs425/lib/mp3/transaction";
+option go_package = "github.com/zonglinpeng/distributed_algorithms/lib/mp3/transaction";
 package transaction;
 
 service Transaction {
@@ -314,8 +314,8 @@ reentrant and atomically upgradeable read-write lock
 
 Q: Transactions should execute atomically. In particular, any changes made by a transaction should be rolled back in case of an abort (initiated either by the user or the server) and all account values should be restored to their state before the transaction.
 
-A: 
-- Transaction aborted by user 
+A:
+- Transaction aborted by user
 
 ![atomicity-client-abort](./image/atomicity-client-abort.JPG)
 
@@ -346,7 +346,7 @@ We support multiple operations on client concurrently. For the example below, BA
 
 ![isolation-hanging-lock-transaction](./image/isolation-hanging-lock-transaction.JPG)
 
-To push the limit the concurrency to the limit, we have a bash script to run on three clients 
+To push the limit the concurrency to the limit, we have a bash script to run on three clients
 
 ```bash
 sleep 3

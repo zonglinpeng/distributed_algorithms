@@ -7,8 +7,8 @@ import (
 
 	sync "github.com/sasha-s/go-deadlock"
 
-	"github.com/bamboovir/cs425/lib/mp1/metrics"
-	"github.com/bamboovir/cs425/lib/mp1/router"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/metrics"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/router"
 	errors "github.com/pkg/errors"
 )
 

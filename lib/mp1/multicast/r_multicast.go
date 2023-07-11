@@ -3,7 +3,7 @@ package multicast
 import (
 	"context"
 
-	"github.com/bamboovir/cs425/lib/mp1/router"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/router"
 	sync "github.com/sasha-s/go-deadlock"
 
 	errors "github.com/pkg/errors"

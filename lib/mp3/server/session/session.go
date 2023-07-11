@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/bamboovir/cs425/lib/mp3/atomic"
-	"github.com/bamboovir/cs425/lib/mp3/rwlock"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/atomic"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp3/rwlock"
 	sync "github.com/sasha-s/go-deadlock"
 
 	log "github.com/sirupsen/logrus"

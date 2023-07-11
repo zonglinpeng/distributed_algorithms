@@ -5,8 +5,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/bamboovir/cs425/lib/mp1/types"
-	"github.com/bamboovir/cs425/lib/retry"
+	"github.com/zonglinpeng/distributed_algorithms/lib/mp1/types"
+	"github.com/zonglinpeng/distributed_algorithms/lib/retry"
 )
 
 type TCPClient struct {
